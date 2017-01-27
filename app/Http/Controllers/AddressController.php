@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\City;
 use App\Model\Address;
-use App\Http\Requests;
+
 
 class AddressController extends Controller
 {
 
     public function index() {
+        //Get all cities
         $cities = City::get();
+
+        //Get all addresses ordered by name
         $addresses =  Address::orderBy('name')->get();
 
         return view('account.address', [
@@ -21,6 +24,7 @@ class AddressController extends Controller
     }
 
     public function store(Request $request) {
+        //Ajax request
         $this->validate($request, [
             'name' => 'required|max:255',
             'city' => 'required',
@@ -29,6 +33,7 @@ class AddressController extends Controller
             'house' => 'max:55',
             'description' => 'max:1255'
         ]);
+
         $address = new Address($request->all());
 
         if($address->save()) {

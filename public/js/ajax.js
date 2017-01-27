@@ -6,6 +6,7 @@ $(document).ready(function() {
         },
     });
 
+    //Create new addresses
     $('#address-form').submit(function(e) {
         e.preventDefault();
         console.log($(this).serialize());
@@ -45,6 +46,7 @@ $(document).ready(function() {
         });
     });
 
+    //Select areas belonging to the chosen city
     $('#city').change(function(e) {
         $('#areas').find('.area-value').remove();
 
