@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('address.index'); view('account.address');
 });
+
+Route::resource('address', 'AddressController');
+Route::get('areas/{id}', 'CityController@getAreas');
